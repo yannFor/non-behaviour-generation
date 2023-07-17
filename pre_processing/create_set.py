@@ -80,7 +80,7 @@ def create_final_y_test(test_key, processed_video_path, output_path, dataset_nam
 
 def main():
     dataset_name = sys.argv[1]
-    general_path = "/storage/raid1/homedirs/alice.delbosc/"
+    general_path = "" #path where there is a folder "data"
     timestep = 0.04
     dataset_path = general_path+ "data/" +dataset_name+"_data/"
     keys_path = dataset_path + "raw_data/Video/Full/"

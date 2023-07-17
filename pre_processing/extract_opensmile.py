@@ -12,23 +12,16 @@ from scipy import ndimage
 def getPath(dataset_name):
     set = None
     anno_dir = None
-    if dataset_name == "pom":
-        audio_dir = "Full"
-    elif dataset_name == "mosi":
-        audio_dir = "WAV_16000/Full"
-    elif dataset_name == "mosei":
-        audio_dir = "Full/WAV_16000"
-    elif dataset_name == "trueness":
+    if dataset_name == "trueness":
         audio_dir = "WAV_16000/Full"
         anno_dir = "Annotations/"
         set = ["train", "test"]
-    elif dataset_name == "obama":
-         audio_dir = "Full"
-         set = ["train", "test"]
+    
     else:
         sys.exit("Error in the dataset name")
 
-    path = "/storage/raid1/homedirs/alice.delbosc/data/"+dataset_name+"_data/raw_data/Audio/"
+    path = "" #path where there is a folder "data"
+    path = path + "data/" + dataset_name+"_data/raw_data/Audio/"
     processed_dir = "processed/"
 
     return path, processed_dir, audio_dir, anno_dir, set
@@ -60,7 +53,6 @@ def createCsvFile(dir, out):
 
 def addDerivative(out, audio_features):
     print("*"*10, "smoothAndAddDerivative", "*"*10)
-    df_silence = pd.read_csv("/baie/nfs-cluster-1/data1/raid1/homedirs/alice.delbosc/Projects/Code/non-verbal-behaviours-generation/pre_processing/silence/silence.csv")
     for csv_file in listdir(out):
         print(csv_file)
         df = pd.read_csv(join(out,csv_file))

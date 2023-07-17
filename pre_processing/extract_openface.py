@@ -11,22 +11,14 @@ from pandas import DataFrame, concat
 
 def getPath(dataset_name):
     set = None
-    if dataset_name == "pom":
-        video_dir = "Full/"
-    elif dataset_name == "mosi":
-        video_dir = "Full/"
-    elif dataset_name == "mosei":
-        video_dir = "Full/"
-    elif dataset_name == "trueness":
+    if dataset_name == "trueness":
         video_dir = "Full/"
         set = ["train", "test"]
-    elif dataset_name == "obama":
-         video_dir = "Full/"
-         set = ["train", "test"]
     else:
         sys.exit("Error in the dataset name")
 
-    path = "/storage/raid1/homedirs/alice.delbosc/data/"+dataset_name+"_data/raw_data/Video/"
+    path = ""  #path where there is a folder "data"
+    path = path + "data/" +dataset_name+"_data/raw_data/Video/"
     processed_dir = "processed/"
 
     return path, processed_dir, video_dir, set
@@ -146,7 +138,7 @@ def correctTimeAndTransitions(out, timestep, min_confidence):
 
 if __name__ == "__main__":
     
-    openFace_dir = "/storage/raid1/homedirs/alice.delbosc/Projects/Code/OpenFace/"
+    openFace_dir = "" #path of the OpenFace directory
 
     dataset_name = sys.argv[1]
     without_extract = sys.argv[2] ## if true, reuse the existing csv file for replaceOutlierValue, correctTimeAndTransitions, smoothCenter
